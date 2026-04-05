@@ -1,0 +1,21 @@
+body {
+    background-color: white;
+}
+.w {
+    display: none;
+}
+.space {
+    display: none;
+}
+nav {
+    display: none;
+}
+.print {
+    display: none;
+}
+.clear a{
+    display: none;
+}
+th, tr {
+    background-color: white !important;
+}

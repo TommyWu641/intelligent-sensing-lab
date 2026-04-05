@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- title -->
+    <title>Intelligent Sensing Lab</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/apply.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/.css'>
+    <script src='main.js'></script>
+    <link rel="icon" type="image/png" href="../image/lab_icon.webp">
+    <script>
+        function whiten1(){
+            let styles = document.querySelectorAll(".a");
+            styles[0].style.backgroundColor = "white";
+            styles[1].style.backgroundColor = "rgb(183, 178, 219)";
+            styles[2].style.backgroundColor = "rgb(183, 178, 219)";
+
+            let showing = document.querySelectorAll(".w form")
+            showing[0].style.display = "block";
+            showing[1].style.display = "none";
+            showing[2].style.display = "none";
+        }
+        function whiten2(){
+            let styles = document.querySelectorAll(".a");
+            styles[1].style.backgroundColor = "white"
+            styles[2].style.backgroundColor = "rgb(183, 178, 219)";
+            styles[0].style.backgroundColor = "rgb(183, 178, 219)";
+
+            let showing = document.querySelectorAll(".w form")
+            showing[1].style.display = "block";
+            showing[0].style.display = "none";
+            showing[2].style.display = "none";
+        }
+        function whiten3(){
+            let styles = document.querySelectorAll(".a");
+            styles[2].style.backgroundColor = "white"
+            styles[1].style.backgroundColor = "rgb(183, 178, 219)";
+            styles[0].style.backgroundColor = "rgb(183, 178, 219)";
+
+            let showing = document.querySelectorAll(".w form")
+            showing[2].style.display = "block";
+            showing[0].style.display = "none";
+            showing[1].style.display = "none";
+        }
+        // function c1b1(){
+        //     let readrank = document.querySelector(".c1 .b input[id='hig']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='1'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c1 label[for='hig']").textContent;
+        // }
+        // function c1b2(){
+        //     let readrank = document.querySelector(".c1 .b input[id='ldt']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='1'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c1 label[for='ldt']").textContent;
+        // }
+        // function c1b3(){
+        //     let readrank = document.querySelector(".c1 .b input[id='nr']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='1'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c1 label[for='nr']").textContent;
+        // }
+        // function c2b1(){
+        //     let readrank = document.querySelector(".c2 .b input[id='mdg']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='2'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c2 label[for='mdg']").textContent;
+        // }
+        // function c2b2(){
+        //     let readrank = document.querySelector(".c2 .b input[id='est']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='2'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c2 label[for='est']").textContent;
+        // }
+        // function c2b3(){
+        //     let readrank = document.querySelector(".c2 .b input[id='wtl']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='2'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c2 label[for='wtl']").textContent;
+        // }
+        // function c3b1(){
+        //     let readrank = document.querySelector(".c3 .b input[id='isn']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='3'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c3 label[for='isn']").textContent;
+        // }
+        // function c3b2(){
+        //     let readrank = document.querySelector(".c3 .b input[id='aes']").value;
+        //     let placeput = document.querySelectorAll(`tr[data-rank="${readrank}"] td`);
+        //     placeput[0].textContent = document.querySelector(".a[data-1='3'] h3").textContent;
+        //     placeput[1].textContent = document.querySelector(".c3 label[for='aes']").textContent;
+        // }
+        document.addEventListener("DOMContentLoaded",connect)
+        function connect(){
+            const rankbutton = document.querySelectorAll('input[value="rank of choice"]');
+            rankbutton.forEach(button => {
+                button.addEventListener("click", function(){
+                    readcheckput(this);
+                })
+            })
+        }
+        function readcheckput(single_button){
+            // 选择前一个兄弟元素
+            const input = single_button.previousElementSibling;  
+
+            // 读取这个input的value，就是rank奥
+            const rank = input.value;
+
+            // read the group 
+            const label = input.previousElementSibling;
+            const group = label.textContent;
+            
+            let division = input.dataset.division;
+
+            checkthenput(rank, group, division);
+            }
+        function checkthenput(rank, group, division){
+            if (!Number.isInteger(Number(rank)) || rank == "") {
+                alert("please enter the rank of chosen company");
+                return false;
+            }
+            if (Number(rank) > 10 || Number(rank) < 0){
+                alert("please enter the rank of chosen between 1 and 10");
+                return false;
+            }
+            const corresponding_rank = document.querySelectorAll(".tr .rank");
+            const corresponding_group = document.querySelectorAll(".group");
+
+            for (var i = 0; i < corresponding_rank.length; i++){
+                if (rank == corresponding_rank[i].textContent){
+                    if (corresponding_group[i].textContent != ""){
+                        alert("you have already chosen this rank");
+                        return false;
+                    }
+                }
+
+            }
+
+            for (var i = 0; i<10; i++){
+                if (group == corresponding_group[i].textContent){
+                    alert("you have chosen this group");
+                    return false;
+                }
+            }            
+    
+            var rank2;
+            if (rank == "1"){
+                rank2 = "1st";
+            }
+            else if (rank == "2"){
+                rank2 = "2nd";
+            }
+            else if (rank == "3"){
+                rank2 = "3rd";
+            }
+            else{
+                rank2 = `${rank}th`;
+            }
+            alert(`You have chosen ${group} as your ${rank2} chosen group in ${division} successfully`);
+            document.querySelector(`tr[data-rank="${rank}"] .group`).textContent = group;
+            document.querySelector(`tr[data-rank="${rank}"] .division`).textContent = division;
+            updateTable()
+        }
+        function updateTable(){
+            let date = document.querySelector(".date");
+            let total = document.querySelector(".total");
+            
+            // 算几个不是空的
+            let count = 0;
+            const choices = document.querySelectorAll(".group");
+            for (var i = 0; i < 10; i++){
+                if (choices[i].textContent !== ""){
+                    count++
+                }
+            }
+            count = String(count);
+            d = Date();
+            date.textContent = `Time:${d}`;
+            total.textContent = `total number of choices: ${count}`
+        }
+        function submitapplication(){
+            let count = 0;
+            const groups = document.querySelectorAll(".group");
+            for (var i=0; i<10; i++){
+                if (groups[i].textContent == ""){
+                    count++;
+                }
+            }
+            if (count == 10){
+                document.querySelector(".submit").textContent="you have not chosen any group";
+                return false;
+            }
+            let gap = [];
+            let highest = 0;
+            let count2 = 0;
+            let countr = "";
+            let c = 0;
+            for (var i = 1; i < 11; i++){
+                if (document.querySelector(`tr[data-rank="${i}"] .group`).textContent != ""){
+                    highest = i;
+                }
+            }
+            for (var j = 1; j<highest; j++){
+                if (document.querySelector(`tr[data-rank="${j}"] .group`).textContent == ""){
+                    count2 = j;
+                    if (count2 == 1){
+                        countr = "1st";
+                    }
+                    else if (count2 == 2){
+                        countr = "2nd";
+                    }
+                    else if (count2 == 3){
+                        countr = "3rd";
+                    }
+                    else{
+                        countr = `${count2}th`;
+                    };
+                    gap.push(countr);
+                    c++;
+
+                }
+            }
+            if (c != 0){
+                document.querySelector(".submit").textContent=`You have not chosen your ${gap.join(", ")} chosen group, you can not leave any gap between your chosen groups`
+            }
+            else if (c == 0){
+                let d = Date();
+                document.querySelector(".submit").textContent=`You have successfully submitted your application at time ${d}`;
+            }
+        }
+        function clearapplication(){
+            for (var i = 1; i<11; i++){
+                document.querySelector(`tr[data-rank="${i}"] .group`).textContent = "";
+                document.querySelector(`tr[data-rank="${i}"] .division`).textContent = "";
+            }
+            updateTable();
+        }
+        
+    </script>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <img src="../image/logo.png" width="550" height="150" alt="logo">
+        <h1>Intelligent Sensing Lab</h1>
+    </header>
+        <!-- navigation -->
+    <nav>
+        <ul>
+            <li><a href="./homepage.html" class="noline">Home</a></li>
+            <li><a href="./aboutpage.html" class="noline">About</a></li>
+            <li><a href="./applypage.html" class="noline">Apply</a></li>
+            <li><a href="./visitpage.html" class="noline">Visit</a></li>
+            <li><a href="./informationpage.html" class="noline">Information</a></li>
+            <li><a href="./contactpage.html" class="noline">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="print">
+    <!-- welcome -->
+    <h2>welcome to ISLab</h2>
+     <!-- apply -->
+    <p>Join our cutting-edge research teams in these focus areas:</p>
+    </div>
+     <div class="w">
+    
+        <div class="a" data-1="1" onclick="whiten1()">
+    <h3>Optical Sensing Division</h3>
+    </div>
+        <div class="a" data-1="2" onclick="whiten2()">
+    <h3>Bio-Sensing Division</h3>
+    </div>
+    <div class="a" data-1="3" onclick="whiten3()">
+    <h3>Smart Sensing Division</h3>
+    </div>
+    <div class="c1">
+    <div class="d">
+        <form action="#" method="get">
+        <div class="b">
+        <p><img src="../image/hyperspectral.png" alt="Hyperspectral Imaging Group" width="200" height="200"></p>
+        <label for="hig">Hyperspectral Imaging Group</label>
+        <input type="text" name="for_hig" id="hig" value="" data-division="Optical Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="b">
+        <p><img src="../image/lidar.png" alt=" LiDAR Development Team" width="200" height="200"></p>
+        <label for="ldt"> LiDAR Development Team</label>
+        <input type="text" name="for_ldt" id="ldt" data-division="Optical Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="b">
+         <p><img src="../image/nanophotonics.png" alt="Nanophotonics Research" width="200" height="200"></p>
+        <label for="nr">Nanophotonics Research</label>
+        <input type="text" name="for_nr" id="nr" data-division="Optical Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+    </form>
+    </div>
+    </div>
+     <div class="c2">
+    <div class="d">
+    <form action="#" method="get">
+        <div class="b">
+        <p><img src="../image/medical.png" alt="Medical Diagnostics Group" width="200" height="200"></p>
+        <label for="mdg">Medical Diagnostics Group</label>
+        <input type="text" name="for_mdg" id="mdg" data-division="Bio-Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="b">
+        <p><img src="../image/environmental.png" alt="Environmental Sensors Team" width="200" height="200"></p>
+        <label for="est">Environmental Sensors Team</label>
+        <input type="text" name="for_est" id="est" data-division="Bio-Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="b">
+         <p><img src="../image/wearable.png" alt="Wearable Technology Lab" width="200" height="200"></p>
+        <label for="wtl">Wearable Technology Lab</label>
+        <input type="text" name="for_wtl" id="wtl" data-division="Bio-Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+    </form>
+    </div>
+    </div>
+    <!--Smart Sensing Division -->
+    <div class="c3">
+    <div class="d">
+     <form action="#" method="get">
+        <div class="b">
+        <p><img src="../image/iot.png" alt="IoT Sensor Networks" width="200" height="200"></p>
+        <label for="isn">IoT Sensor Networks</label>
+        <input type="text" name="for_isn" id="isn" data-division="Smart Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="b">
+        <p><img src="../image/ai.png" alt="AI-Enabled Sensing" width="200" height="200"></p>
+        <label for="aes">AI-Enabled Sensing</label>
+        <input type="text" name="for_aes" id="aes" data-division="Smart Sensing Division">
+        <input type="button" value="rank of choice" class="rank-btn">
+        </div>
+        <div class="kongge">
+        </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    <div class="space"></div>
+    <div class="clear">
+    <p><h2 style="clear:both;">Your Chosen Research Group</h2>
+    <p><h3>Current Internship Placements:</h3>
+    <table>
+        <tr>
+            <th>Division</th>
+            <th>Research Group</th>
+            <th>Rank</th>
+        </tr>
+        <tr data-rank="1" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">1</td>
+        </tr>
+        <tr data-rank="2" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">2</td>
+        </tr>
+        <tr data-rank="3" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">3</td>
+        </tr>
+        <tr data-rank="4" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">4</td>
+        </tr>
+        <tr data-rank="5" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">5</td>
+        </tr>
+        <tr data-rank="6" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">6</td>
+        </tr>
+        <tr data-rank="7" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">7</td>
+        </tr>
+        <tr data-rank="8" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">8</td>
+        </tr>
+        <tr data-rank="9" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">9</td>
+        </tr>
+        <tr data-rank="10" class="tr">
+            <td class="division"></td>
+            <td class="group"></td>
+            <td class="rank">10</td>
+        </tr>
+
+    </table>
+    <p><h3 class="total">total number of choices:3</h3>
+    <P><h3 class="date">Application Deadline: 15 October 2025</h3>
+    <a href="#" class="button1" onclick="submitapplication()">submit</a>
+    <a href="#" class="button1" onclick="clearapplication()">clear</a>
+    <div class="submit" style="text-align: center; color:red"></div>
+</div>
+    <!-- footer -->
+    <footer>
+        <img src="../image/footer_logo.png" width="460" height="100" alt="footer"><br>
+        <p>© CityU 2024 sources of images and text from Wikipedia Commons and Courtesy of Icon pack by Icons8 -- designed by <span><a href="designpage.html">Zijing</a></span></p>
+
+    </footer>
+</body>
+</html>

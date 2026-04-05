@@ -1,0 +1,29 @@
+        .center {
+            margin:auto;
+            width:80%;
+            background-color: white;
+        }
+        .dududu {
+            width:90%;
+            margin:auto;
+        }
+        .dududu img {
+            max-width:45%;
+            height:auto;
+            display: inline-block;
+        }
+        .inline-block {
+            display: inline-block;
+            margin:auto;
+            width:45%;
+
+        }
+        .regi {
+            margin:auto;
+            width:80%;
+        }
+        form label {
+            width:120px;
+            text-align: left;
+            display: inline-block;
+        }

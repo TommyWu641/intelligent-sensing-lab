@@ -1,0 +1,116 @@
+table, tr, td {
+    border:1px solid black;
+    border-collapse: collapse;
+}
+tr:nth-child(even) {
+    background-color: aliceblue;
+}
+tr:nth-child(odd) {
+    background-color: antiquewhite;
+}
+th {
+    background-color: rgb(221, 221, 249);
+}
+tr:hover {
+    background-color: yellow;
+}
+.button1 {
+    text-decoration: none;
+    color:black;
+    border:1px solid rgb(150, 109, 109);
+    padding:0px 6px;
+    display:inline-block;
+    border-radius:4px;
+    background-color: rgb(246, 242, 237);
+}
+.button1:hover {
+    background-color: rgb(223, 218, 212);
+}
+.button1:active {
+    background-color: rgb(251, 243, 243);
+}
+.a{
+    float:left;
+    width:280px;
+    background-color:rgb(183, 178, 219);
+    text-align: center;
+    border:1px solid black;
+}
+.a[data-1="1"]{
+    background-color: white;
+}
+/* .a:hover {
+    background-color: white;
+} */
+.b {
+   display:inline-block;
+   width:280px;
+   border:1px solid black;
+   margin:0px;
+}
+.d {
+    float:left;
+}
+.w form {
+    display: none;
+}
+.c1 .d form{
+    display:block;
+}
+/* .a[data-1="1"]:hover ~ .c1 .d form {
+    display:block;
+    background-color: white;
+}
+.a[data-1="2"]:hover ~ .c2 .d form {
+    display:block;
+    background-color: white;
+}
+.a[data-1="3"]:hover ~ .c3 .d form {
+    display:block;
+
+} */
+.d {
+    width:900px;
+}
+/* .c1 form:hover {
+    display:block;
+    background-color: white;
+}
+.c2 form:hover {
+    display:block;
+    background-color: white;
+} */
+.c3 form:hover {
+    display:block;
+}
+.clear {
+    clear:both;
+}
+.space {
+    width:1000px;
+    height:300px;
+}
+.kongge {
+    width:280px;
+    height:100%;
+    display: inline-block;
+
+}
+form img{
+    margin:0px 10%;
+}
+/* .c3 form:hover .b{
+    background-color: white;
+} */
+/* .a[data-1="3"]:hover ~ .c3 .b{
+    background-color: white;
+} */
+.b:hover {
+    background-color: white;
+}
+/* .c3 form .b:hover {
+    background-color: aliceblue;
+}  */
+.b {
+    margin-right: -4px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- title -->
+    <title>Intelligent Sensing Lab</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/visit.css'>
+    <script src='main.js'></script>
+    <script src='https://personal.cs.cityu.edu.hk/~cs2204/2023/cw3cs2204.js'></script>
+    <link rel="icon" type="image/png" href="../image/lab_icon.webp">
+    <script>
+        function checkvalidation(){
+            let date = document.getElementById("date").value;
+            let time = document.getElementById("time").value;
+            let visiters = document.getElementById("visiter").value; 
+            
+            if (date == "" || time == "" || visiters == ""){
+                document.getElementById("alert").textContent = "Data not complete, please re-enter.";
+                return false;
+            }
+            else{
+                document.getElementById("alert").textContent = "";
+                
+            }
+
+            if (Number(visiters) < 1 || !Number.isInteger(Number(visiters))){
+                document.getElementById("alert").textContent = "Please enter a valid number of people!";
+                return false;
+            }
+            let result = reserve(date, time, visiters);
+            if (result == true){
+                alert("Your reservation is successful!")
+            }
+            else if (result == false){
+                alert("Sorry, the reservation is full")
+            }
+            return false;
+        }
+        function cl(){
+            document.getElementById("alert").textContent = "";
+        }
+    </script>
+</head>
+<body>
+     <!-- header -->
+    <header>
+        <img src="../image/logo.png" width="550" height="150" alt="logo">
+        <h1>Intelligent Sensing Lab</h1>
+    </header>
+        <!-- navigation -->
+    <nav>
+        <ul>
+            <li><a href="./homepage.html" class="noline">Home</a></li>
+            <li><a href="./aboutpage.html" class="noline">About</a></li>
+            <li><a href="./applypage.html" class="noline">Apply</a></li>
+            <li><a href="./visitpage.html" class="noline">Visit</a></li>
+            <li><a href="./informationpage.html" class="noline">Information</a></li>
+            <li><a href="./contactpage.html" class="noline">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="center">
+    <!-- welcome -->
+     <p><h3>Visit Intelligent Sensing Lab to witness groundbreaking research in sensor technology. Our facility features:</h3>
+     <ul>
+        <li>
+             Cleanroom for nanoscale sensor fabrication
+        </li>
+        <li>
+            Environmental testing chambers
+        </li>
+        <li>
+            Sensor calibration and validation center
+        </li>
+        <li>
+            Prototyping workshop
+        </li>
+     </ul>
+     <p>
+        <h3>During your tour, you'll:</h3>
+     
+     <ul>
+        <li>
+             See live demonstrations of our latest sensors
+        </li>
+        <li>
+            Meet leading researchers in optical, bio, and smart sensing
+        </li>        
+        <li>
+            Learn about career and collaboration opportunities
+        </li>
+     </ul>
+     </div>
+     <div class="dududu">
+     <!-- location -->
+      <img src="../image/location.png" width="800" height="800" alt="location of our lab">
+      <div class="inline-block">
+      <p><h3>Location</h3>
+      <p>Address: Tat Chee Avenue, Kowloon, Hong Kong SAR</p>
+      <P>Tel: (852) 9876 5432</P>
+      <p>Email: visit@intelligentsensinglab.edu.hk</p>
+      </div>
+      </div>
+      <!-- registeration -->
+       <div class="regi">
+       <form action="#" method="get" onsubmit=" return checkvalidation()">
+        <h3>Annual Open Day Registration</h3>
+        <fieldset>
+            <legend>Booking Information</legend>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value=""><br>
+            <label for="time">Time:</label>
+            <select id="time" name="time">
+                <option value="9:00 - 10:00 am">9:00 - 10:00 am</option>
+                <option value="10:00 - 11:00 am">10:00 - 11:00 am</option>
+            </select><br>
+            <label for="visiter">NO.of visiters:</label>
+            <input type="number" id="visiter" name="visiter" value="1"><br>
+            <input type="submit" value="check" >
+            <input type="reset" value="clear" onclick="cl()">
+            <p id="alert" style="text-align: center; color:red"></p>
+        </fieldset>
+       </form>
+       </div>
+    <!-- footer -->
+    <footer>
+        <img src="../image/footer_logo.png" width="460" height="100" alt="footer"><br>
+        <p>© CityU 2024 sources of images and text from Wikipedia Commons and Courtesy of Icon pack by Icons8 -- designed by <span><a href="designpage.html">Zijing</a></span></p>
+    </footer>
+</body>
+</html>

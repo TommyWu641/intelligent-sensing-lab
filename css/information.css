@@ -1,0 +1,37 @@
+.kakaka {
+    width:100%;
+}
+.kakaka h3, .kakaka video {
+    display: inline-block;
+    max-width: 45%;
+    height:auto;
+    margin-top:0px;
+    padding: 0px;
+}
+.kakaka h3 {
+    margin-top:0px;
+    vertical-align: top;
+    margin-left:5%;
+}
+tr, td {
+    border:1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+table, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th {
+    background-color: white;
+}
+tr:nth-child(even) {
+    background-color: aliceblue;
+}
+tr:nth-child(odd) {
+    background-color: antiquewhite;
+}
+table {
+    width:auto;
+    margin:auto;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- title -->
+    <title>Intelligent Sensing Lab</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/information.css'>
+    <script src='main.js'></script>
+    <link rel="icon" type="image/png" href="../image/lab_icon.webp">
+        <script>
+        var msg = [
+            "Optical Sensing Division has 8 openings for PhD researchers! Develop next-gen imaging systems.",
+            "Bio-Sensing Group offers 5 internship positions in medical sensor development for researchers!",
+            "very good and funny!"
+        ];
+        // "Optical Sensing Division has 8 openings for PhD researchers! Develop next-gen imaging systems."
+        // "Bio-Sensing Group offers 5 internship positions in medical sensor development for researchers!"
+        // "very good and funny!"
+        const sources = [     
+            
+            {
+                mp4:"https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video2.mp4",
+                webm:"https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video2.webm"
+            },{
+                mp4:"https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video1.mp4",
+                webm:"https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video1.webm"
+            }
+        ]
+        let ci = 0
+        function change(){
+            ci = (ci + 1) % sources.length;
+            const cv = sources[ci];
+
+            const srcs = document.querySelectorAll("video source");
+            srcs[0].src = cv.mp4;
+            srcs[1].src=cv.webm;
+
+            const video = document.querySelector("video");
+            video.load();
+            video.play();
+        }
+        window.onload = function(){
+            let index = 0;
+            const rmsg = Math.floor(Math.random() * msg.length)
+            document.getElementById("msg").textContent = msg[rmsg];
+            function myfunction(){
+                document.getElementById("msg").textContent = msg[index];
+                index = (index+1) % msg.length;
+            }
+            setInterval(myfunction, 3000)
+
+            const endthenplay = document.querySelector("video");
+            endthenplay.addEventListener("ended",change);
+        }
+        
+        
+
+    </script>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <img src="../image/logo.png" width="550" height="150" alt="logo">
+        <h1>Intelligent SensingLab</h1>
+    </header>
+        <!-- navigation -->
+    <nav>
+        <ul>
+            <li><a href="./homepage.html" class="noline">Home</a></li>
+            <li><a href="./aboutpage.html" class="noline">About</a></li>
+            <li><a href="./applypage.html" class="noline">Apply</a></li>
+            <li><a href="./visitpage.html" class="noline">Visit</a></li>
+            <li><a href="./informationpage.html" class="noline">Information</a></li>
+            <li><a href="./contactpage.html" class="noline">Contact</a></li>
+        </ul>
+    </nav>
+    <p id="msg" style="text-align: center;"></p>
+    <!-- video part -->
+    <!-- <h3>
+        Optical Sensing Division has 8 openings for PhD researchers! Develop next-gen imaging systems.
+    </h3> -->
+    <div class="kakaka">
+    <h3>
+        Bio-Sensing Group offers 5 internship positions in medical sensor development for researchers!
+    </h3>
+    <video controls width="700" autoplay muted>
+        <source src="https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video2.mp4" type="video/mp4">
+        <source src="https://personal.cs.cityu.edu.hk/~cs2204/2025/video/video2.webm" type="video/webm">
+    </video>
+    </div>
+    <!--table  -->
+    <table>
+        <tr>
+            <th>Research Division</th>
+            <th>Focus Area</th>
+            <th>Open Positions </th>
+            <th>Stipend (HKD/month)</th>
+        </tr>
+        <tr>
+            <td>Optical Sensing</td>
+            <td> Hyperspectral Imaging</td>
+            <td>4</td>
+            <td>18000</td>
+        </tr>
+        <tr>
+            <td>Optical Sensing</td>
+            <td>LiDAR Development</td>
+            <td>3</td>
+            <td>16500</td>
+        </tr>
+        <tr>
+            <td>Bio-Sensing</td>
+            <td>Medical Diagnostics</td>
+            <td>5</td>
+            <td>17000</td>
+        </tr>
+        <tr>
+            <td>Bio-Sensing</td>
+            <td>Environmental Monitoring</td>
+            <td>3</td>
+            <td>15500</td>
+        </tr>
+        <tr>
+            <td>Smart Sensing</td>
+            <td>IoT Networks</td>
+            <td>6</td>
+            <td>16000</td>
+        </tr>
+        <tr>
+            <td>Smart Sensing</td>
+            <td>Structural Monitoring</td>
+            <td>4</td>
+            <td>17500</td>
+        </tr>
+    </table>
+    <!-- footer -->
+    <footer>
+        <img src="../image/footer_logo.png" width="460" height="100" alt="footer"><br>
+        <p>© CityU 2024 sources of images and text from Wikipedia Commons and Courtesy of Icon pack by Icons8 -- designed by <span><a href="designpage.html">Zijing</a></span></p>
+
+    </footer>
+</body>
+</html>
